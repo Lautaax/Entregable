@@ -43,23 +43,18 @@ socket.on("product_add", (product) => {
     );
   addedProduct.setAttribute("id", product._id)
   addedProduct.innerHTML = `
-  <div class="flex flex-wrap w-full p-2 justify-evenly">
+  <div>
     ${product.thumbnails
       .map(
         (thumbnail) =>
-          `<img src="${thumbnail}" alt="product image" class="aspect-square max-h-40 m-2 ring-4 rounded-xl"/>`
+          `<img src="${thumbnail}" alt="product image" />`
       )
       .join("")}
   </div>
-  <div class="px-5 pb-5">
-    <h5 class="text-2xl font-semibold tracking-tight text-white">${
-      product.title
-    }</h5>
-    <p class="text-xs font-semibold tracking-tight text-white">${
-      product.description
-    }</p>
-    <div class="flex items-center justify-between">
-      <p class="text-3xl font-bold text-white pt-2">$${product.price}
+  <div >Nombre : ${product.title}</h5>
+    <p>Descripcion : ${product.description}</p>
+    <div>
+      <p>Precio : ${product.price}
       </p>
     </div>
   </div>
