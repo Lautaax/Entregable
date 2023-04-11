@@ -1,0 +1,47 @@
+<div id="app" >
+  <h1>Bienvenido a barbershop</h1>
+  <h2>Ver Productos</h2>
+  <div id="productsList">
+    {{#each products}}
+      <div
+        id="{{this._id}}"
+      >
+        <div >
+          {{#each this.thumbnails}}
+            <img
+              src="{{this}}"
+              alt="product image"
+            />
+          {{/each}}
+        </div>
+
+        <div>
+          <h5
+          >Titulo:{{this.title}}</h5>
+          <p
+          >Descripcion:{{this.description}}</p>
+          <div>
+            <p>Precio:${{this.price}}</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div>
+    <br /><hr /><br />
+  </div>
+  <div>
+    <a href="/realTimeProducts">
+      <button>Productos tiempo real</button>
+    </a>
+  </div>
+  <div>
+    <br /><hr /><br />
+  </div>
+  <div >
+    <h3>ir al chat</h3>
+    <a href="/chat">
+      <button>Chat</button>
+    </a>
+  </div>
+</div>

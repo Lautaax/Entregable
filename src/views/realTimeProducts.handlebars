@@ -1,0 +1,132 @@
+<div id="app" class="p-4 bg-slate-800/95">
+  <h1>Benvenido a Barbershop</h1>
+
+  <div>
+    <form
+      action="/api/products"
+      id="addProductForm"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <h3>Subir Producto</h3>
+      <div>
+        <input type="text" name="title" id="title" placeholder=" " required />
+        <label for="title">Nombre</label>
+      </div>
+      <div class="relative z-0 w-full mb-6 group">
+        <input
+          placeholder=" "
+          type="text"
+          name="description"
+          id="description"
+          required
+        />
+        <label for="description">Descripcion</label>
+      </div>
+      <div>
+        <input placeholder=" " type="text" name="code" id="code" required />
+        <label for="code">Codigo</label>
+      </div>
+      <div>
+        <input placeholder=" " type="number" name="price" id="price" required />
+        <label for="price">Price</label>
+      </div>
+      <div>
+        <input placeholder=" " type="number" name="stock" id="stock" required />
+        <label for="stock">Stock</label>
+      </div>
+      <div class="relative z-0 w-full mb-6 group">
+        <input
+          placeholder=" "
+          type="text"
+          name="category"
+          id="category"
+          required
+        />
+        <label for="category">Categoris</label>
+      </div>
+      <div>
+        <label for="thumbnails">Imagen</label>
+        <input type="file" id="thumbnails" name="thumbnails" multiple />
+
+      </div>
+      <button type="submit">Enviar </button>
+      <button type="reset">Resetear</button>
+    </form>
+    <div class="flex flex-col justify-between">
+      <form action="" id="deleteProductForm">
+        <h3>Eliminar Producto</h3>
+        <div>
+          <input type="text" name="pid" id="pid" placeholder=" " required />
+          <label for="pid">Id producto</label>
+        </div>
+        <button type="submit">Eliminar</button>
+        <button type="reset">Reset</button>
+      </form>
+      <di>
+        <br /><hr /><br />
+      </di>
+
+      <form action="/api/carts" method="post" enctype="multipart/form-data">
+        <h3>Create an empty cart:</h3>
+        <button type="submit">Create! 🛒</button>
+      </form>
+      <div class="w-auto mx-2">
+        <br /><hr /><br />
+      </div>
+      <div>
+        <h3>chat</h3>
+        <a href="/chat">
+          <button>Ir al chat</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-auto mx-2">
+    <br /><hr /><br />
+  </div>
+
+  <h2>Productos:</h2>
+  <div id="productsList">
+    {{#each products}}
+      <div id="{{this._id}}">
+        <div>
+          {{#each this.thumbnails}}
+            <img src="{{this}}" alt="product image" />
+          {{/each}}
+        </div>
+
+        <div>
+          <h5> Nombre{{this.title}}</h5>
+          <p>Descripcion{{this.description}}</p>
+          <div>
+            <p>Precio${{this.price}}</p>
+            <button>Agregar al carro</button>
+          </div>
+          <div>
+            <input
+              placeholder=" "
+              type="number"
+              name="stock"
+              id="stock"
+              required
+            />
+            <label for="stock">ID DEL CARRO</label>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div>
+    <br /><hr /><br />
+  </div>
+  <div>
+    <h3>iR A LA PAGINA PRINCIPAL</h3>
+    <a href="/">
+      <button>Home</button>
+    </a>
+  </div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/realTimeProducts.js"></script>

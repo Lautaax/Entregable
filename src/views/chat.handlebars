@@ -1,0 +1,62 @@
+<div id="app">
+  <h1>Welcome to BarberShop</h1>
+  <h2>Chatear</h2>
+  <div>
+    <br /><hr/><br />
+  </div>
+
+  <div>
+    <label
+      for="chatBox">Chatear aca, enviar mensaje</label>
+    <input id="chatBox"/>
+  </div>
+
+  <div id="messagesList">
+    {{#each messages}}
+      <div
+      >
+        <div
+        >
+            <path
+              fill-rule="evenodd"
+              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </div>
+        <div>
+          <p>Usuario :{{this.user}}</p>
+          <p>Mensaje :{{this.message}}</p>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div>
+    <br/><hr /><br />
+  </div>
+  <div>
+    <h3></h3>
+    <a href="/realTimeProducts">
+      <button
+      >Productos tiempo real</button>
+    </a>
+  </div>
+  <div >
+    <br /><hr /><br />
+  </div>
+  <div >
+    <h3 >Ir a inicio</h3>
+    <a href="/">
+      <button
+      >Home</button>
+    </a>
+  </div>
+</div>
+<script
+  src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js
+"
+></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script>
