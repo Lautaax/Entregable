@@ -6,12 +6,12 @@ const messagesList = document.getElementById("messagesList");
 
 Swal.fire({
   icon: "info",
-  title: "Entrar",
+  title: "Login please",
   input: "text",
-  text: "Ingresar nombre!",
-  confirmButtonText: "Ingresar",
+  text: "Type your username!",
+  confirmButtonText: "Login",
   inputValidator: (value) => {
-    return !value && "Ingresar usuario y presionar entre.";
+    return !value && "You must enter your username to enter.";
   },
   allowOutsideClick: false,
   customClass: {
@@ -27,8 +27,8 @@ Swal.fire({
   socket.emit("user-auth", user);
   Swal.fire({
     icon: "success",
-    title: `Bienvenido ${user}!`,
-    confirmButtonText: "Gracias!",
+    title: `Welcome ${user}!`,
+    confirmButtonText: "Thanks!",
     timer: 2000,
     timerProgressBar: true,
     customClass: {
@@ -66,8 +66,9 @@ socket.on("message_add", (message) => {
   );
   addedMessage.setAttribute("id", message._id);
   addedMessage.innerHTML = `
-  <div>
+  <div class="relative w-10 h-10 overflow-hidden bg-gray-700 ring-2 ring-gray-400 rounded-full flex-shrink-0 mx-3">
     <svg
+      class="absolute w-12 h-12 text-gray-500 -left-1"
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
@@ -79,9 +80,9 @@ socket.on("message_add", (message) => {
       ></path>
     </svg>
   </div>
-  <div>
-    <p>Usuario : ${message.user}</p>
-    <p> Mensaje: ${message.message}</p>
+  <div class="my-3 ml-1 mr-4 text-justify text-slate-300">
+    <p class="font-mono text-lg font-medium tracking-wider text-slate-50">${message.user}</p>
+    <p>${message.message}</p>
   </div>
   `;
 
@@ -90,8 +91,8 @@ socket.on("message_add", (message) => {
 
 socket.on("user-connected", (data) => {
   Swal.fire({
-    title: "Nuevo Usuario",
-    text: `${data} Entro al chat`,
+    title: "New user authenticated",
+    text: `${data} has joined the chat`,
     toast: true,
     position: "top-right",
     icon: "success",
