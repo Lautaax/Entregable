@@ -43,25 +43,8 @@ const env = async () => {
     console.log("Server up in port 8080!")
   );
 
- /* app.use("/setCookie"),
-    (req, res) => {
-      res
-        .cookie("CoderCookie", "Una cookie compleja", { signed: true })
-        .send("Cookie created");
-    };
-
-  app.use("/getCookies"),
-    (req, res) => {
-      res.send(req.cookies);
-    };
-
-  app.use("/clearCookies"),
-    (req, res) => {
-      res.clearCookie("CoderCookie").send("Cookie Deleted");
-    };
-*/
   mongoose.connect(
-    `mongodb+srv://soylautaa:4530622La@coderclass.faf26nj.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_NAME}.lihzhkv.mongodb.net/?retryWrites=true&w=majority`
   );
 
   socket.connect(httpServer);
