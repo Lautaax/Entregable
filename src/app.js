@@ -44,7 +44,7 @@ const env = async () => {
   );
 
   mongoose.connect(
-    `mongodb+srv://soylautaa:4530622La@coderclass.faf26nj.mongodb.net/?retryWrites=true&w=majority`
+    `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_NAME}.faf26nj.mongodb.net/?retryWrites=true&w=majority`
   );
 
   socket.connect(httpServer);
